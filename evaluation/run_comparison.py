@@ -61,9 +61,9 @@ def main():
     batch=str(uuid.uuid4()); root=Path(a.runs_dir); root.mkdir(parents=True,exist_ok=True)
     config=dict(protocol='comparison-1.0',batch_id=batch,seed=a.seed,suite_sha256=suite_hash,
                 source_sha256=fingerprint(),corpus_sha256=hashlib.sha256(corpus.read_bytes()).hexdigest(),
-                model=os.getenv('ECG_MODEL','DeepSeek-V4-Flash-0731-W8A8'),temperature=0,
+                model=os.getenv('ECG_MODEL',''),temperature=0,
                 timeout_seconds=180,max_tokens=1800,sdk_retries=0,
-                endpoint_sha256=hashlib.sha256(os.getenv('ECG_BASE_URL','http://aigw.dlut.edu.cn/v1').encode()).hexdigest())
+                endpoint_sha256=hashlib.sha256(os.getenv('ECG_BASE_URL','').encode()).hexdigest())
     manifest={'config':config,'tasks':[{'repetition':r,'case_id':c['id'],'schemes':s} for r,c,s in tasks]}
     atomic_json(root/(batch+'.manifest.json'),manifest)
     print('Batch:',batch,flush=True)

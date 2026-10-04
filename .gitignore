@@ -98,3 +98,6 @@ venv/
 
 # Local config backups
 /configs/*.backup-*
+
+# Local configuration delivery package
+/ecg_public_setup/

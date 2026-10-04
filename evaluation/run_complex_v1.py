@@ -68,10 +68,10 @@ def main():
     if any(i>=len(data) for i in indices):p.error('Index outside data')
     h=hashlib.sha256()
     for f in sorted((ROOT/'src').rglob('*.py')):h.update(f.relative_to(ROOT).as_posix().encode());h.update(f.read_bytes())
-    cfg={'batch_id':batch,'protocol':'complex-v1.2','plan_protocol_version':PROTOCOL_VERSION,'model':os.getenv('ECG_MODEL','DeepSeek-V4-Flash-0731-W8A8'),
+    cfg={'batch_id':batch,'protocol':'complex-v1.2','plan_protocol_version':PROTOCOL_VERSION,'model':os.getenv('ECG_MODEL',''),
          'timeout_seconds':90,'max_tokens':6000,'source_sha256':h.hexdigest(),'data_sha256':hashlib.sha256(path.read_bytes()).hexdigest(),
          'runner_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
-         'endpoint_sha256':hashlib.sha256(os.getenv('ECG_BASE_URL','http://aigw.dlut.edu.cn/v1').encode()).hexdigest(),
+         'endpoint_sha256':hashlib.sha256(os.getenv('ECG_BASE_URL','').encode()).hexdigest(),
          'tool_scope':sorted(ALLOWED),'sdk_retries':0,'rules_role':'frozen coverage baseline; not general rules capability',
          'plan_role':'one LLM plan + bounded deterministic execution + one LLM answer',
          'agent_role':'installed production policy, at most4 requests including repairs; same query cap6',

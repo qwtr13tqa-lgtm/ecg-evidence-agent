@@ -68,9 +68,9 @@ def main():
     for f in sorted(list((ROOT/'src').rglob('*.py'))+list((ROOT/'evaluation').glob('*.py'))):h.update(f.relative_to(ROOT).as_posix().encode());h.update(f.read_bytes())
     config={'batch_id':batch,'protocol':'capability-1.0','source_sha256':h.hexdigest(),
         'suite_sha256':hashlib.sha256(Path(a.cases_file).read_bytes()).hexdigest(),
-        'model':os.getenv('ECG_MODEL','DeepSeek-V4-Flash-0731-W8A8'),'timeout_seconds':180,'max_tokens':1800,
+        'model':os.getenv('ECG_MODEL',''),'timeout_seconds':180,'max_tokens':1800,
         'sdk_retries':0,'temperature':0,'memory':'existing last-3-successful-turns adapter',
-        'endpoint_sha256':hashlib.sha256(os.getenv('ECG_BASE_URL','http://aigw.dlut.edu.cn/v1').encode()).hexdigest()}
+        'endpoint_sha256':hashlib.sha256(os.getenv('ECG_BASE_URL','').encode()).hexdigest()}
     atomic_json(root/(batch+'.manifest.json'),{'config':config,'tasks':tasks});print('Batch:',batch,flush=True)
     pipeline=ECGAnalysisPipeline();data=np.load(ROOT/'data/Processed_PTBXL/test.npy',mmap_mode='r',allow_pickle=False)
     corpus=ROOT/'data/knowledge/ecg_knowledge.jsonl'

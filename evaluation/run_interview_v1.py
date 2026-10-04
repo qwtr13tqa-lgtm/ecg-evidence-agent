@@ -70,12 +70,12 @@ def main():
     for f in sorted(list((ROOT/'src').rglob('*.py'))+list((ROOT/'evaluation').glob('*.py'))):h.update(f.relative_to(ROOT).as_posix().encode());h.update(f.read_bytes())
     config={'batch_id':batch,'protocol':'interview-v1','source_sha256':h.hexdigest(),
         'suite_sha256':hashlib.sha256(Path(a.cases_file).read_bytes()).hexdigest(),
-        'model':os.getenv('ECG_MODEL','DeepSeek-V4-Flash-0731-W8A8'),'timeout_seconds':90,'max_tokens':6000,
+        'model':os.getenv('ECG_MODEL',''),'timeout_seconds':90,'max_tokens':6000,
         'sdk_retries':0,'temperature':0,'memory':'same ConversationGateway and window resolver; independent per-scheme histories',
         'rule_version':'threeway-routes-1.0', 'agent_policy':'installed production agent including bounded repair',
         'primary_unit':'turn; conversation success additionally reported',
         'data_sha256':hashlib.sha256((ROOT/'data/Processed_PTBXL/test.npy').read_bytes()).hexdigest(),
-        'endpoint_sha256':hashlib.sha256(os.getenv('ECG_BASE_URL','http://aigw.dlut.edu.cn/v1').encode()).hexdigest()}
+        'endpoint_sha256':hashlib.sha256(os.getenv('ECG_BASE_URL','').encode()).hexdigest()}
     config['actual_scheme_order_seed']=17
     atomic_json(root/(batch+'.manifest.json'),{'config':config,'tasks':tasks});print('Batch:',batch,flush=True)
     pipeline=ECGAnalysisPipeline();data=np.load(ROOT/'data/Processed_PTBXL/test.npy',mmap_mode='r',allow_pickle=False)

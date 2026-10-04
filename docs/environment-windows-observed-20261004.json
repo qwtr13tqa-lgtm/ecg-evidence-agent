@@ -1,0 +1,383 @@
+{
+  "scope": "Observed installed distributions; NOT a dependency lock or verified clean installation. Package origins and wheel hashes were not captured.",
+  "python_family": "3.10",
+  "platform": "Windows",
+  "packages": [
+    {
+      "name": "altair",
+      "version": "6.2.2"
+    },
+    {
+      "name": "annotated-types",
+      "version": "0.8.0"
+    },
+    {
+      "name": "anyio",
+      "version": "4.15.1"
+    },
+    {
+      "name": "attrs",
+      "version": "26.1.0"
+    },
+    {
+      "name": "certifi",
+      "version": "2026.7.22"
+    },
+    {
+      "name": "charset-normalizer",
+      "version": "3.5.1"
+    },
+    {
+      "name": "click",
+      "version": "8.5.0"
+    },
+    {
+      "name": "cloudpickle",
+      "version": "3.1.2"
+    },
+    {
+      "name": "colorama",
+      "version": "0.4.6"
+    },
+    {
+      "name": "contourpy",
+      "version": "1.3.2"
+    },
+    {
+      "name": "cycler",
+      "version": "0.12.1"
+    },
+    {
+      "name": "distro",
+      "version": "1.9.0"
+    },
+    {
+      "name": "exceptiongroup",
+      "version": "1.3.1"
+    },
+    {
+      "name": "filelock",
+      "version": "3.32.3"
+    },
+    {
+      "name": "fonttools",
+      "version": "4.65.0"
+    },
+    {
+      "name": "fsspec",
+      "version": "2026.7.0"
+    },
+    {
+      "name": "h11",
+      "version": "0.16.0"
+    },
+    {
+      "name": "heartpy",
+      "version": "1.2.7"
+    },
+    {
+      "name": "httpcore",
+      "version": "1.0.9"
+    },
+    {
+      "name": "httpcore2",
+      "version": "2.12.0"
+    },
+    {
+      "name": "httptools",
+      "version": "0.8.0"
+    },
+    {
+      "name": "httpx",
+      "version": "0.28.1"
+    },
+    {
+      "name": "httpx2",
+      "version": "2.12.0"
+    },
+    {
+      "name": "idna",
+      "version": "3.19"
+    },
+    {
+      "name": "itsdangerous",
+      "version": "2.2.0"
+    },
+    {
+      "name": "Jinja2",
+      "version": "3.1.6"
+    },
+    {
+      "name": "jiter",
+      "version": "0.17.0"
+    },
+    {
+      "name": "joblib",
+      "version": "1.6.0"
+    },
+    {
+      "name": "jsonpatch",
+      "version": "1.33"
+    },
+    {
+      "name": "jsonpointer",
+      "version": "3.1.1"
+    },
+    {
+      "name": "jsonschema",
+      "version": "4.26.0"
+    },
+    {
+      "name": "jsonschema-specifications",
+      "version": "2025.9.1"
+    },
+    {
+      "name": "kiwisolver",
+      "version": "1.5.1"
+    },
+    {
+      "name": "langchain-core",
+      "version": "1.6.3"
+    },
+    {
+      "name": "langchain-protocol",
+      "version": "0.0.19"
+    },
+    {
+      "name": "langgraph",
+      "version": "1.2.11"
+    },
+    {
+      "name": "langgraph-checkpoint",
+      "version": "4.2.0"
+    },
+    {
+      "name": "langgraph-prebuilt",
+      "version": "1.1.0"
+    },
+    {
+      "name": "langgraph-sdk",
+      "version": "0.4.4"
+    },
+    {
+      "name": "langsmith",
+      "version": "0.12.4"
+    },
+    {
+      "name": "MarkupSafe",
+      "version": "3.0.3"
+    },
+    {
+      "name": "matplotlib",
+      "version": "3.10.9"
+    },
+    {
+      "name": "mpmath",
+      "version": "1.3.0"
+    },
+    {
+      "name": "narwhals",
+      "version": "2.26.0"
+    },
+    {
+      "name": "networkx",
+      "version": "3.4.2"
+    },
+    {
+      "name": "numpy",
+      "version": "2.2.6"
+    },
+    {
+      "name": "openai",
+      "version": "3.13.0"
+    },
+    {
+      "name": "orjson",
+      "version": "3.12.0"
+    },
+    {
+      "name": "ormsgpack",
+      "version": "1.12.2"
+    },
+    {
+      "name": "packaging",
+      "version": "26.3"
+    },
+    {
+      "name": "pandas",
+      "version": "2.3.3"
+    },
+    {
+      "name": "pillow",
+      "version": "12.3.0"
+    },
+    {
+      "name": "pip",
+      "version": "26.2.1"
+    },
+    {
+      "name": "plotly",
+      "version": "7.0.0"
+    },
+    {
+      "name": "protobuf",
+      "version": "7.36.1"
+    },
+    {
+      "name": "pyarrow",
+      "version": "25.0.1"
+    },
+    {
+      "name": "pydantic",
+      "version": "2.13.5"
+    },
+    {
+      "name": "pydantic_core",
+      "version": "2.46.5"
+    },
+    {
+      "name": "pydeck",
+      "version": "0.9.3"
+    },
+    {
+      "name": "pyparsing",
+      "version": "3.3.2"
+    },
+    {
+      "name": "python-dateutil",
+      "version": "2.9.0.post0"
+    },
+    {
+      "name": "python-multipart",
+      "version": "0.0.32"
+    },
+    {
+      "name": "pytz",
+      "version": "2026.3.post1"
+    },
+    {
+      "name": "PyYAML",
+      "version": "6.0.3"
+    },
+    {
+      "name": "referencing",
+      "version": "0.37.0"
+    },
+    {
+      "name": "requests",
+      "version": "2.34.2"
+    },
+    {
+      "name": "requests-toolbelt",
+      "version": "1.0.0"
+    },
+    {
+      "name": "rpds-py",
+      "version": "0.30.0"
+    },
+    {
+      "name": "scikit-learn",
+      "version": "1.7.2"
+    },
+    {
+      "name": "scipy",
+      "version": "1.15.3"
+    },
+    {
+      "name": "setuptools",
+      "version": "81.0.0"
+    },
+    {
+      "name": "six",
+      "version": "1.17.0"
+    },
+    {
+      "name": "sniffio",
+      "version": "1.3.1"
+    },
+    {
+      "name": "starlette",
+      "version": "1.6.0"
+    },
+    {
+      "name": "streamlit",
+      "version": "1.63.0"
+    },
+    {
+      "name": "sympy",
+      "version": "1.13.1"
+    },
+    {
+      "name": "tenacity",
+      "version": "9.1.4"
+    },
+    {
+      "name": "threadpoolctl",
+      "version": "3.6.0"
+    },
+    {
+      "name": "toml",
+      "version": "0.10.2"
+    },
+    {
+      "name": "torch",
+      "version": "2.6.0+cpu"
+    },
+    {
+      "name": "torchvision",
+      "version": "0.21.0+cpu"
+    },
+    {
+      "name": "tqdm",
+      "version": "4.70.1"
+    },
+    {
+      "name": "truststore",
+      "version": "0.10.4"
+    },
+    {
+      "name": "typing_extensions",
+      "version": "4.16.0"
+    },
+    {
+      "name": "typing-inspection",
+      "version": "0.4.4"
+    },
+    {
+      "name": "tzdata",
+      "version": "2026.4"
+    },
+    {
+      "name": "urllib3",
+      "version": "2.7.0"
+    },
+    {
+      "name": "uuid_utils",
+      "version": "0.17.1"
+    },
+    {
+      "name": "uvicorn",
+      "version": "0.53.0"
+    },
+    {
+      "name": "watchdog",
+      "version": "6.0.0"
+    },
+    {
+      "name": "websockets",
+      "version": "16.1.1"
+    },
+    {
+      "name": "wheel",
+      "version": "0.48.0"
+    },
+    {
+      "name": "xxhash",
+      "version": "4.0.1"
+    },
+    {
+      "name": "zstandard",
+      "version": "0.25.0"
+    }
+  ]
+}

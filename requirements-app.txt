@@ -1,0 +1,16 @@
+# Direct dependencies inferred from source; NOT a tested lockfile.
+# Install an appropriate PyTorch build separately (see docs/SETUP.md).
+numpy
+scipy
+pandas
+streamlit
+plotly
+openai
+langgraph
+langchain-core
+httpx
+PyYAML
+scikit-learn
+matplotlib
+tqdm
+heartpy

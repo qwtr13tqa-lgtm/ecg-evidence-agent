@@ -6,14 +6,14 @@ from .gateway_diagnostics import GatewayDiagnostics
 
 class ToolGateway:
     def __init__(self, *, timeout=180, max_tokens=1800):
-        key = os.getenv("ECG_API_KEY", "").strip()
-        if not key:
-            raise ValueError("缺少 ECG_API_KEY")
+        from .public_config import gateway_config
+        config = gateway_config()
+        key = config["ECG_API_KEY"]
         from openai import OpenAI
-        self.model = os.getenv("ECG_MODEL", "DeepSeek-V4-Flash-0731-W8A8")
+        self.model = config["ECG_MODEL"]
         self.max_tokens = max_tokens
         self.timeout = timeout
-        self.base_url = os.getenv("ECG_BASE_URL", "http://aigw.dlut.edu.cn/v1")
+        self.base_url = config["ECG_BASE_URL"]
         self.diagnostics = GatewayDiagnostics()
         self.client = OpenAI(api_key=key,
             base_url=self.base_url,

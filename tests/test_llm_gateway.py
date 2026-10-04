@@ -10,17 +10,13 @@ import os
 from openai import OpenAI
 
 
-BASE_URL = "http://aigw.dlut.edu.cn/v1"
-MODEL_NAME = "DeepSeek-V4-Flash-0731-W8A8"
+from src.agent.public_config import gateway_config
 
 
 def main():
-    api_key = os.environ.get("ECG_API_KEY", "").strip()
-
-    if not api_key:
-        raise SystemExit(
-            "缺少 ECG_API_KEY，请先在当前终端设置环境变量。"
-        )
+    config = gateway_config()
+    api_key = config["ECG_API_KEY"]
+    model = config["ECG_MODEL"]
 
     # 完全虚构的软件测试数据，不代表患者测量。
     payload = {
@@ -31,17 +27,17 @@ def main():
 
     client = OpenAI(
         api_key=api_key,
-        base_url=BASE_URL,
+        base_url=config["ECG_BASE_URL"],
         timeout=60.0,
         max_retries=0,
     )
 
-    print(f"Model: {MODEL_NAME}")
+    print(f"Model: {model}")
     print("Sending synthetic data only...")
 
     try:
         response = client.chat.completions.create(
-            model=MODEL_NAME,
+            model=model,
             messages=[
                 {
                     "role": "system",

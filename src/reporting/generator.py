@@ -29,8 +29,7 @@ from src.reporting.validator import (
 )
 
 
-BASE_URL = "http://aigw.dlut.edu.cn/v1"
-MODEL_NAME = "DeepSeek-V4-Flash-0731-W8A8"
+from src.agent.public_config import gateway_config
 
 
 class ReportGenerationError(RuntimeError):
@@ -98,16 +97,15 @@ def strict_json_loads(text: str) -> Any:
 class ECGReportGenerator:
 
     def __init__(self):
-        api_key = os.environ.get("ECG_API_KEY", "").strip()
-
-        if not api_key:
-            raise ReportGenerationError(
-                "缺少 ECG_API_KEY，请在当前终端设置并 export。"
-            )
-
+        try:
+            config = gateway_config()
+        except ValueError as exc:
+            raise ReportGenerationError(str(exc)) from exc
+        api_key = config["ECG_API_KEY"]
+        self.model = config["ECG_MODEL"]
         self.client = OpenAI(
             api_key=api_key,
-            base_url=BASE_URL,
+            base_url=config["ECG_BASE_URL"],
             timeout=180.0,
             max_retries=0,
         )
@@ -262,7 +260,7 @@ class ECGReportGenerator:
 
         try:
             response = self.client.chat.completions.create(
-                model=MODEL_NAME,
+                model=self.model,
                 messages=[
                     {
                         "role": "system",
@@ -332,7 +330,7 @@ class ECGReportGenerator:
         return {
             "status": "structurally_valid_draft",
             "data_kind": "synthetic_software_test",
-            "model": MODEL_NAME,
+            "model": self.model,
             "report": report,
             "validation": validation.to_dict(),
             "requires_review": True,

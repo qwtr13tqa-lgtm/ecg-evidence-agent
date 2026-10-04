@@ -102,7 +102,7 @@ $env:LANGSMITH_TRACING = "false"
 $env:LANGCHAIN_TRACING_V2 = "false"
 ```
 
-然后执行上面的 Streamlit 启动命令，并在页面确认外发范围。`agent.env.example` 仅为示例，应用不会自动加载它。当前 `start_ecg_app.ps1` 仍绑定开发网关；公开使用时优先按本节显式配置。
+然后执行上面的 Streamlit 启动命令，并在页面确认外发范围。`agent.env.example` 仅为示例，应用不会自动加载它。`start_ecg_app.ps1` 读取已有配置并询问缺失项；`-LocalOnly` 可启动本地模式。详见 [公开配置与环境准备](docs/SETUP.md)。
 
 ## 建议的演示路线
 

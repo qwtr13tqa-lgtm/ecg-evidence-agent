@@ -36,7 +36,7 @@ class TestReportGeneratorOffline(unittest.TestCase):
         # 仅在测试期间替换环境变量，结束后自动恢复。
         env_patch = patch.dict(
             os.environ,
-            {"ECG_API_KEY": "offline-test-not-a-real-key"},
+            {"ECG_API_KEY": "offline-test-not-a-real-key", "ECG_BASE_URL": "https://example.invalid/v1", "ECG_MODEL": "test-model"},
         )
         env_patch.start()
         self.addCleanup(env_patch.stop)

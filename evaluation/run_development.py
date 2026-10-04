@@ -56,12 +56,12 @@ def main():
             versions[package] = importlib.metadata.version(package)
         except importlib.metadata.PackageNotFoundError:
             versions[package] = "not_installed"
-    config = {"model": os.getenv("ECG_MODEL", "DeepSeek-V4-Flash-0731-W8A8"),
+    config = {"model": os.getenv("ECG_MODEL", ""),
         "suite_sha256": suite_hash, "source_sha256": source_fingerprint(),
         "corpus_sha256": hashlib.sha256(corpus.read_bytes()).hexdigest() if corpus.exists() else None,
         "max_model_calls": 4, "max_tool_calls": 6, "timeout_seconds": 180,
         "max_tokens": 1800, "temperature": 0, "sdk_retries": 0,
-        "endpoint_sha256": hashlib.sha256(os.getenv("ECG_BASE_URL", "http://aigw.dlut.edu.cn/v1").encode()).hexdigest(),
+        "endpoint_sha256": hashlib.sha256(os.getenv("ECG_BASE_URL", "").encode()).hexdigest(),
         "python": platform.python_version(), "packages": versions}
     # No API key, arbitrary environment dictionary, or credential-bearing URL is stored.
     print(f"Development runs: {len(selected)*args.repeat}; up to {len(selected)*args.repeat*4} model requests. No automatic retries.", flush=True)

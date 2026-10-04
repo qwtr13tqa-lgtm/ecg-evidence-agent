@@ -148,7 +148,7 @@ def freeze(root,report_path,history_path,destination):
     rows,stats=enrich(report,ReadHistory(destination/'history.sqlite'))
     dump(destination/'rows.json',rows);dump(destination/'suite.json',suite())
     dump(destination/'oracles.json',{c['id']:expected(c,rows) for c in suite()})
-    manifest={'version':VERSION,'created_at':datetime.now(timezone.utc).isoformat(),'sources':sources(root),'files':{n:sha(destination/n) for n in ('report.json','history.sqlite','rows.json','suite.json','oracles.json')},'model':os.getenv('ECG_MODEL','DeepSeek-V4-Flash-0731-W8A8'),'endpoint_sha256':hashlib.sha256(os.getenv('ECG_BASE_URL','http://aigw.dlut.edu.cn/v1').encode()).hexdigest(),'runtime_env':{k:v for k,v in os.environ.items() if k.startswith('ECG_BATCH_') and 'KEY' not in k},'python':__import__('sys').version,'history_matched':sum(r.get('history_status')=='matched' for r in rows),'records':len(rows),'scope':'collection-level; no new inference; reference workflow has oracle task parameters, not an NL competitor'}
+    manifest={'version':VERSION,'created_at':datetime.now(timezone.utc).isoformat(),'sources':sources(root),'files':{n:sha(destination/n) for n in ('report.json','history.sqlite','rows.json','suite.json','oracles.json')},'model':os.getenv('ECG_MODEL',''),'endpoint_sha256':hashlib.sha256(os.getenv('ECG_BASE_URL','').encode()).hexdigest(),'runtime_env':{k:v for k,v in os.environ.items() if k.startswith('ECG_BATCH_') and 'KEY' not in k},'python':__import__('sys').version,'history_matched':sum(r.get('history_status')=='matched' for r in rows),'records':len(rows),'scope':'collection-level; no new inference; reference workflow has oracle task parameters, not an NL competitor'}
     import zipfile
     import importlib.metadata
     manifest['dependencies']={}
@@ -210,8 +210,8 @@ def run(root,folder,repeats,allow):
     manifest=verify(root,folder);cases=json.loads((folder/'suite.json').read_text(encoding='utf-8'));oracles=json.loads((folder/'oracles.json').read_text(encoding='utf-8'))
     print(len(cases),'tasks per repetition; <= 6 model requests each (production shortcut may use zero). Judge excluded. No inference.')
     if not allow:print('Preview only; add --allow-external.');return
-    if os.getenv('ECG_MODEL','DeepSeek-V4-Flash-0731-W8A8')!=manifest['model']:raise ValueError('MODEL_CHANGED')
-    if hashlib.sha256(os.getenv('ECG_BASE_URL','http://aigw.dlut.edu.cn/v1').encode()).hexdigest()!=manifest['endpoint_sha256']:raise ValueError('ENDPOINT_CHANGED')
+    if os.getenv('ECG_MODEL','')!=manifest['model']:raise ValueError('MODEL_CHANGED')
+    if hashlib.sha256(os.getenv('ECG_BASE_URL','').encode()).hexdigest()!=manifest['endpoint_sha256']:raise ValueError('ENDPOINT_CHANGED')
     if repeats<1 or repeats>3:raise ValueError('repeats must be 1..3')
     if (folder/'schedule.json').exists():raise ValueError('BATCH_ALREADY_STARTED: records retained; freeze a new directory to rerun')
     from src.review.cross_record_agent import run as agent
@@ -307,7 +307,7 @@ def freeze_boundary(root,destination):
         rs=enrich(data['report'],SyntheticHistory(data,True))[0] if c.get('fixture_variant') else rows
         oracles[c['id']]=expected(c,rs)
     for name,value in [('report.json',data['report']),('fixture.json',data),('rows.json',rows),('suite.json',cases),('oracles.json',oracles)]:dump(destination/name,value)
-    m={'version':VERSION,'data_kind':'synthetic_software_test','created_at':datetime.now(timezone.utc).isoformat(),'sources':sources(root),'files':{n:sha(destination/n) for n in ('report.json','fixture.json','rows.json','suite.json','oracles.json')},'model':os.getenv('ECG_MODEL','DeepSeek-V4-Flash-0731-W8A8'),'endpoint_sha256':hashlib.sha256(os.getenv('ECG_BASE_URL','http://aigw.dlut.edu.cn/v1').encode()).hexdigest(),'runtime_env':{k:v for k,v in os.environ.items() if k.startswith('ECG_BATCH_') and 'KEY' not in k},'records':len(data['records']),'scope':'synthetic edge cases; separate from real batch results'}
+    m={'version':VERSION,'data_kind':'synthetic_software_test','created_at':datetime.now(timezone.utc).isoformat(),'sources':sources(root),'files':{n:sha(destination/n) for n in ('report.json','fixture.json','rows.json','suite.json','oracles.json')},'model':os.getenv('ECG_MODEL',''),'endpoint_sha256':hashlib.sha256(os.getenv('ECG_BASE_URL','').encode()).hexdigest(),'runtime_env':{k:v for k,v in os.environ.items() if k.startswith('ECG_BATCH_') and 'KEY' not in k},'records':len(data['records']),'scope':'synthetic edge cases; separate from real batch results'}
     with zipfile.ZipFile(destination/'source.zip','w',zipfile.ZIP_DEFLATED) as z:
         for name in m['sources']:z.write(root/name,name)
     m['files']['source.zip']=sha(destination/'source.zip');dump(destination/'manifest.json',m)
