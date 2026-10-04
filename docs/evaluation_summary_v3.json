@@ -1,0 +1,139 @@
+{
+  "scope": "Aggregate summaries only; raw records retained locally; not a full-answer correctness metric",
+  "real_tasks": {
+    "version": "cross-record-eval-3",
+    "planned": 14,
+    "recorded": 14,
+    "missing": 0,
+    "automatic_pass": 14,
+    "fields_correct": 64,
+    "fields_total": 64,
+    "query_events": 19,
+    "cache_hits": 0,
+    "errors": {
+      "none": 14
+    },
+    "model_requests": 12,
+    "median_seconds": 8.246356499992544,
+    "human_review": "not_available",
+    "llm_review": "separate preliminary only",
+    "automatic_acceptance_rate": 1.0,
+    "planned_fields_total": 64,
+    "planned_field_coverage": 1.0,
+    "by_family": {
+      "CLARIFY": {
+        "planned": 2,
+        "recorded": 2,
+        "automatic_pass": 2,
+        "requests": 0,
+        "median_seconds": 0.00038430001586675644
+      },
+      "COMPARE": {
+        "planned": 2,
+        "recorded": 2,
+        "automatic_pass": 2,
+        "requests": 4,
+        "median_seconds": 75.92290554995998
+      },
+      "CONDITIONAL": {
+        "planned": 2,
+        "recorded": 2,
+        "automatic_pass": 2,
+        "requests": 2,
+        "median_seconds": 42.63887439999962
+      },
+      "COUNTS": {
+        "planned": 2,
+        "recorded": 2,
+        "automatic_pass": 2,
+        "requests": 2,
+        "median_seconds": 7.532534250000026
+      },
+      "FN_TOP5": {
+        "planned": 2,
+        "recorded": 2,
+        "automatic_pass": 2,
+        "requests": 3,
+        "median_seconds": 59.973231949988985
+      },
+      "FP_SORT": {
+        "planned": 2,
+        "recorded": 2,
+        "automatic_pass": 2,
+        "requests": 1,
+        "median_seconds": 3.010121049999725
+      },
+      "MISSING": {
+        "planned": 2,
+        "recorded": 2,
+        "automatic_pass": 2,
+        "requests": 0,
+        "median_seconds": 0.8633297499909531
+      }
+    },
+    "reliability": {
+      "first_pass_without_recovery": 12,
+      "recovered_pass": 2,
+      "recovery_attempted_runs": 2,
+      "first_pass_rate": 0.8571428571428571,
+      "eventual_pass_rate": 1.0,
+      "total_seconds": 379.8827624999103,
+      "total_model_requests": 12,
+      "scope": "All planned runs denominator; missing runs not successes; first pass excludes any repair/recovery."
+    }
+  },
+  "synthetic_boundary_tasks": {
+    "version": "cross-record-eval-3",
+    "planned": 7,
+    "recorded": 7,
+    "missing": 0,
+    "automatic_pass": 7,
+    "fields_correct": 15,
+    "fields_total": 15,
+    "query_events": 9,
+    "cache_hits": 0,
+    "errors": {
+      "none": 7
+    },
+    "model_requests": 5,
+    "median_seconds": 11.849639499967452,
+    "human_review": "not_available",
+    "llm_review": "separate preliminary only",
+    "automatic_acceptance_rate": 1.0,
+    "planned_fields_total": 15,
+    "planned_field_coverage": 1.0,
+    "by_family": {
+      "CONDITIONAL": {
+        "planned": 3,
+        "recorded": 3,
+        "automatic_pass": 3,
+        "requests": 3,
+        "median_seconds": 11.849639499967452
+      },
+      "FN_TOP5": {
+        "planned": 2,
+        "recorded": 2,
+        "automatic_pass": 2,
+        "requests": 2,
+        "median_seconds": 35.66559679998318
+      },
+      "MISSING": {
+        "planned": 2,
+        "recorded": 2,
+        "automatic_pass": 2,
+        "requests": 0,
+        "median_seconds": 0.029395149991614744
+      }
+    },
+    "reliability": {
+      "first_pass_without_recovery": 7,
+      "recovered_pass": 0,
+      "recovery_attempted_runs": 0,
+      "first_pass_rate": 1.0,
+      "eventual_pass_rate": 1.0,
+      "total_seconds": 123.55647079995833,
+      "total_model_requests": 5,
+      "scope": "All planned runs denominator; missing runs not successes; first pass excludes any repair/recovery."
+    }
+  }
+}
