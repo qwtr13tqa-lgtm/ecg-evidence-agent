@@ -1,0 +1,50 @@
+# Windows网站启动说明
+
+这是说明文档，不是需要整份粘贴执行的脚本。当前统一入口app_ecg.py，端口8505。
+
+## 仅本地分析、固定筛选和使用帮助
+
+在项目根目录执行：
+
+```powershell
+.\.venv-ecg\Scripts\python.exe -m streamlit run app_ecg.py --server.address 127.0.0.1 --server.port 8505 --browser.gatherUsageStats false
+```
+
+## 需要外部模型问答时
+
+在同一个PowerShell窗口，先设置环境变量再启动。BASE_URL和MODEL填写实际已开通且兼容工具调用的值；不在说明中绑定旧网关或假定旧模型别名仍可用。
+
+
+```powershell
+$token = Read-Host "请输入完整网关Token" -AsSecureString
+$env:ECG_API_KEY = [System.Net.NetworkCredential]::new("", $token).Password
+Remove-Variable token
+$env:ECG_BASE_URL = Read-Host "请输入网关Base URL（含服务要求的路径，例如/v1）"
+$env:ECG_MODEL = Read-Host "请输入已开通的模型名称"
+$env:LANGSMITH_TRACING = "false"
+$env:LANGCHAIN_TRACING_V2 = "false"
+.\.venv-ecg\Scripts\python.exe -m streamlit run app_ecg.py --server.address 127.0.0.1 --server.port 8505 --browser.gatherUsageStats false
+
+
+```
+
+Token不会通过上面命令打印，但会存在当前进程环境中，不应将其贴进日志或提交到仓库。外部ECG问答仍需在页面授权。应用配置默认地址可能是HTTP，实际传输方式取决于配置，不应把界面固定文字当作传输验证。
+
+## 操作路线
+
+1. 侧栏选择新建、历史或批量复核。
+2. 打开记录后，“查看信号”看波形，“向本记录提问”查询工具，“查看分析依据”看细节，“导出记录”下载会话。
+3. 单条/批次问题先明确本轮范围。常见使用帮助由本地说明回答，不消耗模型请求。
+4. 从批量打开单条会校验数据版本；找不到兼容历史时，需要用户点击后运行本地分析。
+5. 侧栏可重新打开步骤指引。历史删除需确认，不能在界面撤销，不等于归档。
+
+## 常见问题
+
+- 提问按钮不可用：数据问题需授权网关；还需检查是否有pending请求或达到会话轮数上限。
+- pending请求：先确认无仍在执行的任务；结束本地等待不保证取消远端请求，不自动重发。
+- 回答保存失败：保留错误和调用轨迹，检查输出契约；不要删除数据库解决。
+- 524/超时：检查网关诊断和服务渠道，不靠放宽答案校验处理。
+- 无候选区域：查看筛选规则，不能解释为没有疾病。
+- 批次数据哈希不同：选择报告对应的数据文件，不只看文件名。
+
+8506独立批量页面可保留但无需同时启动。关闭网站用启动终端Ctrl+C。备份运行中的SQLite应使用一致性备份方法；不要随意删除history.sqlite3及其运行期辅助文件。

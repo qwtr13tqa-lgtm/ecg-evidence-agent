@@ -1,0 +1,100 @@
+# Python and local environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv*/
+venv/
+.workbuddy/
+
+# Credentials: templates remain eligible for review
+.env
+.env.*
+*.env
+*.pem
+*.key
+.streamlit/secrets.toml
+!.env.example
+!*.env.example
+
+# Local model weights and ECG arrays
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+/ckpt_shape_guided_shapex_gate/
+/data/**/*.npy
+/data/**/*.npz
+/data/**/*.dat
+/data/**/*.hea
+/data/**/*.mat
+/data/**/*.edf
+/data/**/*.h5
+/data/**/*.hdf5
+# Do not ignore data/knowledge or evaluation source/case definitions.
+
+# Local history and generated output
+/local_history/
+/outputs_test/
+*.log
+/*.npy
+/misclassified_*.txt
+/train.txt
+/tsne_comparison.jpg
+/project_environment_info.json
+
+# Local packaging, audit and archived installers
+/*.zip
+/*.rar
+/*.7z
+/project_audit_*/
+/project_root_after_archive.txt
+/git_candidate_files.txt
+/git_ignored_files.txt
+/git_status_after_ignore.txt
+/ecg_gitignore.txt
+/batch_ui_backups/
+/project_docs_backups/
+/ecg_archive_tool/
+/ecg_complex_eval_v1/
+/ecg_ui_cleanup/
+/interview_eval_v1/
+/project_readmes_update/
+/sgrfnet_softcopyright/
+/SGRFNet使用说明书_模板重写版.docx
+*.save
+
+# Known accidental empty root files (not deleted)
+/--run
+/batch
+/continue
+/from
+/import
+/PY
+
+# Raw evaluation outputs stay local; publish curated results separately.
+/evaluation/batch_evidence_runs/
+/evaluation/capability_reports/
+/evaluation/capability_runs/
+/evaluation/comparison_runs/
+/evaluation/complex_reports_v1/
+/evaluation/complex_runs_v1/
+/evaluation/cross_record_frozen/
+/evaluation/cross_record_rescores/
+/evaluation/cross_record_runs/
+/evaluation/gateway_diagnostics/
+/evaluation/inference_consistency/
+/evaluation/interview_reports/
+/evaluation/interview_runs/
+/evaluation/local_analysis_jobs/
+/evaluation/reports/
+/evaluation/runs/
+/evaluation/threeway_reports/
+/evaluation/threeway_runs/
+/evaluation/threshold_runs/
+/evaluation/unified_reports/
+/evaluation/website_path_reports/
+
+# Local config backups
+/configs/*.backup-*

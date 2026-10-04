@@ -1,0 +1,42 @@
+{
+  "enabled": true,
+  "threshold": -0.9182019432385763,
+  "score_space": "raw",
+  "comparator": ">=",
+  "profile": {
+    "score_version": "sgrf-combined-raw-v1",
+    "checkpoint_sha256": "14d3e9fd3c1387fa326898c50b41521dc819aa2b744922b237bef88295352a62",
+    "implementation_sha256": {
+      "src/inference/sgrf_adapter.py": "e5d710f8fdb106f8432d9393f02d6c27f065b7013d1edfd6f9e31862e19dd5bf",
+      "lib/SGRFNet.py": "0b94963f8c46f8ebd2bae35639a7a4513e92f3aba24bde9765c55d8cf20a21a4",
+      "lib/modules.py": "27d848cd17b530846efebea2065ccbfa1746278c8d38772a75387356f2dc2368",
+      "lib/modules2.py": "7e9653792bd14e2108aa60e00482c8f6b49ba44509a9852be15a54f401be6f11"
+    },
+    "sampling_rate": 500,
+    "num_samples": 4800,
+    "num_leads": 12,
+    "crop_start_sample": 100,
+    "mask_ratio_time": 30,
+    "mask_ratio_spec": 20,
+    "normalization": "per_lead_minmax_minus1_plus1",
+    "direction": "higher_is_more_anomalous",
+    "score_space": "raw"
+  },
+  "selection": {
+    "split": "development_reused",
+    "used_for_checkpoint_selection": true,
+    "split_id": "existing_training_monitor_set",
+    "method": "youden_j_raw",
+    "dataset_sha256": "d84512c1d065adc145335bbf947c42f37ddb16edf395962d13d2174f24e5881a",
+    "labels_sha256": "2b43691ed89cfe10c431d081d0c1f33b9dbbe4c0147d3657e4ae70b444edbe92",
+    "sample_count": 2160,
+    "normal_count": 912,
+    "anomaly_count": 1248,
+    "validation_tpr": 0.6129807692307693,
+    "validation_fpr": 0.14912280701754385,
+    "validation_youden_j": 0.4638579622132254,
+    "tie_policy": "highest_threshold",
+    "independent_test_evaluated": false,
+    "scores_file_sha256": "82c64b525b98413ce09087e664b18ec4fdc35b3fb665d5a22fc06300a316663b"
+  }
+}

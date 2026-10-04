@@ -1,0 +1,8 @@
+{"id":"Q01","query":"RR interval 是什么意思","relevant_ids":["MED_RR"]}
+{"id":"Q02","query":"单个 RR 秒数如何换算 heart rate bpm","relevant_ids":["MED_HR"]}
+{"id":"Q03","query":"漏检误检会影响 HRV 吗","relevant_ids":["MED_PEAK_ERRORS"]}
+{"id":"Q04","query":"NN intervals 和 RR 有什么区别","relevant_ids":["MED_NN"]}
+{"id":"Q05","query":"项目 heart_rate mean_rr 怎么计算","relevant_ids":["ENG_RHYTHM"]}
+{"id":"Q06","query":"relative_evidence_score 可以解释为异常概率吗","relevant_ids":["ENG_SCORES"]}
+{"id":"Q07","query":"9.6 秒裁剪片段峰坐标怎么还原","relevant_ids":["ENG_WINDOW"]}
+{"id":"Q08","query":"项目 rr_std 能否直接称为 SDNN，NN 是什么","relevant_ids":["ENG_RHYTHM","MED_NN"]}

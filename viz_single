@@ -1,0 +1,59 @@
+import os
+import numpy as np
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+
+# ========= 路径（已确认）=========
+SRC = r'C:\Users\10093\Desktop\项目\data\Processed_PTBXL'
+# 相对路径也可以：
+# SRC = 'data/Processed_PTBXL'
+
+LEAD_NAMES = ['I', 'II', 'III', 'aVR', 'aVL', 'aVF',
+              'V1', 'V2', 'V3', 'V4', 'V5', 'V6']
+
+# ========= 加载 =========
+data_path  = os.path.join(SRC, 'test.npy')
+label_path = os.path.join(SRC, 'label.npy')
+
+data = np.load(data_path)
+print('test.npy :', data.shape, data.dtype)
+
+labels = None
+if os.path.exists(label_path):
+    labels = np.load(label_path)
+    print('label.npy:', labels.shape, labels.dtype)
+else:
+    print('⚠️  未找到 label.npy（不影响画图）')
+
+# ========= 选一条样本 =========
+idx = 7                      # ← 想看第几条改这里
+sig = data[idx]               # (5000, 12)
+fs  = 500
+t   = np.arange(sig.shape[0]) / fs      # 秒
+
+print(f'\nSample idx={idx}')
+print(f'  形状={sig.shape}  std={sig.std():.4f}  min={sig.min():.3f}  max={sig.max():.3f}')
+
+# ========= 画 12 导联 =========
+fig, axes = plt.subplots(12, 1, figsize=(14, 16), sharex=True)
+for ch in range(12):
+    axes[ch].plot(t, sig[:, ch], lw=0.8, color='black')
+    axes[ch].set_ylabel(LEAD_NAMES[ch], rotation=0, labelpad=20, fontsize=11)
+    axes[ch].grid(alpha=0.3)
+    axes[ch].set_xlim(t[0], t[-1])
+axes[-1].set_xlabel('Time (s)', fontsize=12)
+
+title = f'Sample idx={idx}'
+if labels is not None:
+    lab = labels[idx]
+    if hasattr(lab, '__len__') and not isinstance(lab, str):
+        lab = int(np.argmax(lab))
+    title += f'  label={lab}'
+fig.suptitle(title, fontsize=14, y=0.995)
+
+plt.tight_layout()
+out = f'viz_single_idx{idx}.png'
+plt.savefig(out, dpi=150, bbox_inches='tight')
+plt.close()
+print(f'\n✅ Saved: {os.path.abspath(out)}')

@@ -1,0 +1,14 @@
+# Observed on user's Linux/Python 3.10.12 environment. NOT a full lock file.
+# torch reported CUDA 12.4; installation channel is not captured here.
+numpy==2.2.6
+scipy==1.15.3
+pandas==2.3.3
+torch==2.6.0
+streamlit==1.63.0
+plotly==7.0.0
+openai==3.8.0
+langgraph==1.2.11
+langchain-core==1.6.2
+httpx==0.28.1
+PyYAML==6.0.3
+scikit-learn==1.7.2
